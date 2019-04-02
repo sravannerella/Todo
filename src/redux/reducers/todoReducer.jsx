@@ -1,6 +1,5 @@
 let nextID = 0;
 const todoReducer = (state=[], action) => {
-	console.log("ACTION:", action);
 	switch(action.type){
 		case 'ADD_TODO':
 			return [
