@@ -5,6 +5,7 @@ import Tasks from '../Tasks/Tasks';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {connect} from 'react-redux';
+import Modal from '../Modal/Modal';
 
 class Board extends React.PureComponent{
 
@@ -12,27 +13,30 @@ class Board extends React.PureComponent{
 		super(props);
 		this.classes = props.classes;
 		this.state = {
-			todos: []
+			todos: [],
+			open: false
 		}
 	}
 
 	componentWillReceiveProps(props){
 		this.setState({
 			todos: props.todos,
-			more: props.more
+			more: props.more,
+			open: props.open
 		})
 	}
 
-	addTodo = (text, more) => {
-		this.props.addTodo(text, more);
+	showModal = () => {
+		this.props.toggleModal(this.state.open);
 	}
 
 	render(){
 		return(
 			<div className={this.classes.boardSize}>
+				<Modal />
 				<Tasks obj={this.state.todos} />
 				<div className={this.classes.center}>
-					<Fab variant="extended" aria-label="Add" className={this.classes.fab} onClick={this.addTodo.bind(this,"NEW WORLD", "hello")}>
+					<Fab variant="extended" aria-label="Add" className={this.classes.fab} onClick={this.showModal.bind(this)}>
 						<AddIcon color="primary" /> Add task
 					</Fab>
 				</div>
@@ -42,12 +46,13 @@ class Board extends React.PureComponent{
 }
 
 const mapStateToProps = (state) => ({
-	todos: state.todoReducer
+	todos: state.todoReducer,
+	visibility: state.visibilityReducer
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	toggleTodo: (id) => dispatch({type: "TOGGLE_TODO",id}),
-	addTodo: (text, more) => dispatch({type: "ADD_TODO", text, more})
+	toggleModal: (open) => dispatch({type: "TOGGLE_MODAL", open})
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, {withTheme: true})(Board));
