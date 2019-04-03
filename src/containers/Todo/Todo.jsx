@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
-import Board from '../../components/Board/Board';
+import Board from '../Board/Board';
 // import Paper from '@material-ui/core/Paper';
 import { styles } from './style';
 import {withStyles} from '@material-ui/core/styles';

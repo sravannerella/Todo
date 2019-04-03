@@ -1,11 +1,11 @@
 import React from 'react';
 import { styles } from './style';
 import {withStyles} from '@material-ui/core/styles';
-import Tasks from '../Tasks/Tasks';
+import Tasks from '../../components/Tasks/Tasks';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {connect} from 'react-redux';
-import Modal from '../Modal/Modal';
+import Modal from '../../components/Modal/Modal';
 
 class Board extends React.PureComponent{
 
