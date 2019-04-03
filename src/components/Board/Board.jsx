@@ -22,6 +22,7 @@ class Board extends React.PureComponent{
 		this.setState({
 			todos: props.todos,
 			more: props.more,
+			board: props.board,
 			open: props.open
 		})
 	}
@@ -32,15 +33,17 @@ class Board extends React.PureComponent{
 
 	render(){
 		return(
-			<div className={this.classes.boardSize}>
-				<Modal />
-				<Tasks obj={this.state.todos} />
+			<>
+				<div className={this.classes.boardSize}>
+					<Modal />
+					<Tasks obj={this.state.todos} />
+				</div>
 				<div className={this.classes.center}>
 					<Fab variant="extended" aria-label="Add" className={this.classes.fab} onClick={this.showModal.bind(this)}>
 						<AddIcon color="primary" /> Add task
 					</Fab>
 				</div>
-			</div>
+			</>
 		);
 	}
 }

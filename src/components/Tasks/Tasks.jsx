@@ -15,6 +15,29 @@ class Tasks extends React.PureComponent{
 	constructor(props){
 		super(props);
 		this.classes = props.classes;
+		// this.sortByBoard();
+		this.state = {
+			obj: {}
+		}
+	}
+
+	componentWillReceiveProps(props){
+		this.sortByBoard(props);
+	}
+
+	sortByBoard(props){
+		let obj = props.obj;
+		let output = {};
+		obj.forEach((item, i) => {
+			if(output[item.board] === undefined){
+				output[item.board] = [item];
+			} else {
+				output[item.board].push(item);
+			}
+		});
+		this.setState({
+			obj: output
+		});
 	}
 
 	markDone(id){
@@ -24,15 +47,22 @@ class Tasks extends React.PureComponent{
 	render(){
 		return (
 			<>
-				<List>
-					{this.props.obj.map((item) => {
+				<List className={this.classes.list}>
+					{Object.keys(this.state.obj).map((board, i) => {
 						return (
-							<ListItem className={this.classes.item} key={item.id}>
-								<ListItemIcon onClick={this.markDone.bind(this, item.id)}>
-									{(item.completed ) ? <DoneIcon className={this.classes.blue}></DoneIcon> : <RadioButtonUncheckedIcon className={this.classes.radio}></RadioButtonUncheckedIcon>}
-								</ListItemIcon>
-								<ListItemText primary={item.text} secondary={item.more}></ListItemText>
-							</ListItem>
+							<div className={this.classes.board} key={i}>
+								<h1 className={this.classes.boardHeading}>{board}</h1>
+								{this.state.obj[board].map((item) => {
+									return(
+										<ListItem className={this.classes.item} key={item.id}>
+											<ListItemIcon onClick={this.markDone.bind(this, item.id)}>
+												{(item.completed ) ? <DoneIcon className={this.classes.blue}></DoneIcon> : <RadioButtonUncheckedIcon className={this.classes.radio}></RadioButtonUncheckedIcon>}
+											</ListItemIcon>
+											<ListItemText key={item.id} primary={item.text} secondary={item.more}></ListItemText>
+										</ListItem>
+									)
+								})}
+							</div>
 						)
 					})}
 				</List>

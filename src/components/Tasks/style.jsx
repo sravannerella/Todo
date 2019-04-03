@@ -8,6 +8,7 @@ export const styles = theme => ({
 			borderBottomLeftRadius: 5,
 			borderBottomRightRadius: 5,
 		},
+		minHeight: 70,
 		borderWidth: 1,
 		borderTopWidth: 0.5,
 		borderStyle: 'solid',
@@ -16,6 +17,24 @@ export const styles = theme => ({
 			boxShadow: theme.shadows[2],
 			zIndex: 2000
 		}
+	},
+	board: {
+		margin: '0 10px',
+		width: 300,
+		borderTopWidth: 6,
+		borderTopStyle: 'solid',
+		borderTopColor: theme.palette.primary.main,
+		borderTopLeftRadius: 2,
+		borderTopRightRadius: 2 
+	},
+	boardHeading: {
+		fontSize: 18,
+		paddingLeft: 10
+	},
+	list: {
+		display: 'flex',
+		flexDirection: 'row',
+		flexWrap: 'wrap'
 	},
 	blue: {
 		color: '#1a73e8',

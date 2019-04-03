@@ -1,6 +1,5 @@
 export const styles = theme => ({
 	boardSize: {
-		width: 400,
 		padding: 5
 	},
 	fab: {
