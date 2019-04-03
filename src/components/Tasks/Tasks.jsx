@@ -4,11 +4,14 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import { styles } from './style';
 import {withStyles} from '@material-ui/core/styles';
 import DoneIcon from '@material-ui/icons/Done';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import {connect} from 'react-redux';
+import Edit from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton';
 
 class Tasks extends React.PureComponent{
 
@@ -28,7 +31,7 @@ class Tasks extends React.PureComponent{
 	sortByBoard(props){
 		let obj = props.obj;
 		let output = {};
-		obj.forEach((item, i) => {
+		obj.forEach((item) => {
 			if(output[item.board] === undefined){
 				output[item.board] = [item];
 			} else {
@@ -42,6 +45,13 @@ class Tasks extends React.PureComponent{
 
 	markDone(id){
 		this.props.toggleTodo(id);
+	}
+
+	editTask(board, id){
+		console.log("GOT ID:", this.state.obj[board]);
+		let obj = this.state.obj[board].filter((item) => item.id === id);
+		obj = obj[0];
+		this.props.editModal(obj.text, obj.more, board, id);
 	}
 
 	render(){
@@ -59,6 +69,11 @@ class Tasks extends React.PureComponent{
 												{(item.completed ) ? <DoneIcon className={this.classes.blue}></DoneIcon> : <RadioButtonUncheckedIcon className={this.classes.radio}></RadioButtonUncheckedIcon>}
 											</ListItemIcon>
 											<ListItemText key={item.id} primary={item.text} secondary={item.more}></ListItemText>
+											<ListItemSecondaryAction>
+												<IconButton aria-label="Delete" onClick={this.editTask.bind(this, board, item.id)}>
+													<Edit></Edit>
+												</IconButton>
+											</ListItemSecondaryAction>
 										</ListItem>
 									)
 								})}
@@ -76,7 +91,8 @@ Tasks.propTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-	toggleTodo: (id) => dispatch({type: "TOGGLE_TODO", id})
+	toggleTodo: (id) => dispatch({type: "TOGGLE_TODO", id}),
+	editModal: (text, more, board, id) => dispatch({type: "EDIT_MODAL", open: false, text, more, board, id})
 });
 
 export default connect(null, mapDispatchToProps)(withStyles(styles, {withTheme: true})(Tasks));

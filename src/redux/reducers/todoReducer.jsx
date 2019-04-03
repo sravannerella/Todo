@@ -15,6 +15,11 @@ const todoReducer = (state=[], action) => {
 					completed: false
 				}
 			]
+		case 'UPDATE_TODO':
+			console.log(action.isEdit);
+			return state.map((todo) => {
+				return (todo.id === action.id) ? ({...todo, text: action.text, more: action.more, board: action.board, isEdit: true }) :  {...todo, isEdit: true};
+			})
 		case 'TOGGLE_TODO':
 			return state.map((todo) => {
 				return (todo.id === action.id) ? ({...todo, completed: !todo.completed}) : todo;

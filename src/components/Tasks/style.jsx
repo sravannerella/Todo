@@ -15,7 +15,7 @@ export const styles = theme => ({
 		borderColor: '#dadce0',
 		'&:hover': {
 			boxShadow: theme.shadows[2],
-			zIndex: 2000
+			cursor: 'pointer'
 		}
 	},
 	board: {
