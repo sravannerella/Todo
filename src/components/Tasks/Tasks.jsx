@@ -49,7 +49,6 @@ class Tasks extends React.PureComponent{
 	}
 
 	editTask(board, id){
-		console.log("GOT ID:", this.state.obj[board]);
 		let obj = this.state.obj[board].filter((item) => item.id === id);
 		obj = obj[0];
 		this.props.editModal(obj.text, obj.more, board, id);

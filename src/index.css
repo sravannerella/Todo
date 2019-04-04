@@ -16,3 +16,13 @@ body {
 code {
 	font-family: "Product Sans",source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+div li:nth-child(2) > div{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+div li:last-child > div{
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}

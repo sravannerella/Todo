@@ -26,7 +26,7 @@ class Board extends React.PureComponent{
 			more: props.more,
 			board: props.board,
 			open: props.open
-		})
+		});
 	}
 
 	showModal = () => {

@@ -81,16 +81,9 @@ class Modal extends React.PureComponent{
 							)
 						})}
 					</TextField>
-					{/* <div>
-						<Button color="default" className={this.classes.btn} onClick={this.showDateTime.bind(this)}>
-							<CalendarToday className={this.classes.iconMargin}></CalendarToday>
-							Add date/time
-						</Button>
-					</div> */}
 				</DialogContent>
 				<DialogActions>
 					<Button color="secondary" onClick={this.cancel.bind(this)}>Cancel</Button>
-					{console.log(this.state.isEdit)}
 					{ (this.state.isEdit !== true) ? <Button color="primary" onClick={this.addTask.bind(this)}>Add</Button> : <Button color="primary" onClick={this.updateTask.bind(this)}>Update</Button>}
 
 				</DialogActions>
