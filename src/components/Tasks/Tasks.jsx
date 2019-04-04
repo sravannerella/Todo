@@ -12,13 +12,14 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import {connect} from 'react-redux';
 import Edit from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
+import { toggleTodo } from '../../redux/actions/todoActions';
+import { editModal } from '../../redux/actions/visibilityActions';
 
 class Tasks extends React.PureComponent{
 
 	constructor(props){
 		super(props);
 		this.classes = props.classes;
-		// this.sortByBoard();
 		this.state = {
 			obj: {}
 		}
@@ -90,9 +91,4 @@ Tasks.propTypes = {
 	obj: PropTypes.array.isRequired
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	toggleTodo: (id) => dispatch({type: "TOGGLE_TODO", id}),
-	editModal: (text, more, board, id) => dispatch({type: "EDIT_MODAL", open: false, text, more, board, id})
-});
-
-export default connect(null, mapDispatchToProps)(withStyles(styles, {withTheme: true})(Tasks));
+export default connect(null, { toggleTodo, editModal })(withStyles(styles, {withTheme: true})(Tasks));

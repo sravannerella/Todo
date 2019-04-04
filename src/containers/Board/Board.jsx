@@ -6,6 +6,8 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {connect} from 'react-redux';
 import Modal from '../../components/Modal/Modal';
+import {toggleModal} from '../../redux/actions/visibilityActions';
+import {toggleTodo} from '../../redux/actions/todoActions';
 
 class Board extends React.PureComponent{
 
@@ -53,9 +55,4 @@ const mapStateToProps = (state) => ({
 	visibility: state.visibilityReducer
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	toggleTodo: (id) => dispatch({type: "TOGGLE_TODO",id}),
-	toggleModal: (open) => dispatch({type: "TOGGLE_MODAL", open})
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, {withTheme: true})(Board));
+export default connect(mapStateToProps, { toggleTodo, toggleModal })(withStyles(styles, {withTheme: true})(Board));

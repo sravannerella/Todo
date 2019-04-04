@@ -11,6 +11,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import MenuItem from '@material-ui/core/MenuItem';
 import { styles } from './style';
 import {withStyles} from '@material-ui/core/styles';
+import {toggleModal} from '../../redux/actions/visibilityActions';
+import {addTodo, updateTodo} from '../../redux/actions/todoActions';
 
 class Modal extends React.PureComponent{
 	
@@ -27,7 +29,6 @@ class Modal extends React.PureComponent{
 	}
 
 	componentWillReceiveProps(props){
-		console.log("PROPS IN MODAL:", props);
 		this.setState({
 			open: props.open,
 			text: props.text,
@@ -46,16 +47,16 @@ class Modal extends React.PureComponent{
 
 	updateTask(){
 		this.props.updateTodo(this.state.text, this.state.more, this.state.board, this.state.id);
-		this.props.close(this.state.open);
+		this.props.toggleModal(this.state.open);
 	}
 
 	addTask(){
 		this.props.addTodo(this.state.text, this.state.more, this.state.board);
-		this.props.close(this.state.open);
+		this.props.toggleModal(this.state.open);
 	}
 
 	cancel(){
-		this.props.close(this.state.open);
+		this.props.toggleModal(this.state.open);
 	}
 
 	render(){
@@ -107,10 +108,4 @@ const mapStateToProps = (state) => ({
 	isEdit: state.visibilityReducer.isEdit
 });
 
-const mapDispatchToProps = (dispatch) => ({
-	close: (open) => dispatch({type: "TOGGLE_MODAL", open}),
-	updateTodo: (text, more, board, id) => dispatch({type: "UPDATE_TODO", text, more, board, id}),
-	addTodo: (text, more, board) => dispatch({type: "ADD_TODO", text, more, board})
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, {withTheme: true})(Modal));
+export default connect(mapStateToProps, {toggleModal, addTodo, updateTodo})(withStyles(styles, {withTheme: true})(Modal));
