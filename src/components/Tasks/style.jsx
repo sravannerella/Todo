@@ -10,24 +10,6 @@ export const styles = theme => ({
 			cursor: 'pointer'
 		}
 	},
-	board: {
-		margin: '0 10px',
-		width: 300,
-		borderTopWidth: 6,
-		borderTopStyle: 'solid',
-		borderTopColor: theme.palette.primary.main,
-		borderTopLeftRadius: 2,
-		borderTopRightRadius: 2
-	},
-	boardHeading: {
-		fontSize: 18,
-		paddingLeft: 10
-	},
-	list: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap'
-	},
 	blue: {
 		color: '#1a73e8',
 		transition: '0.5s all infinite',

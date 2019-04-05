@@ -1,7 +1,8 @@
-import { CREATE_BOARD, RENAME_BOARD, DELETE_BOARD, TOGGLE_BOARD } from "../constants/board";
+import { CREATE_BOARD, RENAME_BOARD, DELETE_BOARD } from "../constants/board";
 
 let nextID = 0;
 const boardReducer = (state=[], action) => {
+	console.log("STATE: ", state);
 	switch(action.type){
 		case CREATE_BOARD:
 			return [
@@ -22,11 +23,6 @@ const boardReducer = (state=[], action) => {
 				}
 			});
 			return state;
-		case TOGGLE_BOARD:
-			return {
-				...state,
-				boardOpen: !action.boardOpen
-			}
 		default:
 			return state;
 	}
