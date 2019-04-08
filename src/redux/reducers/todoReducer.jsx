@@ -1,7 +1,9 @@
+import {ADD_TODO} from '../constants/todo';
+
 let nextID = 0;
 const todoReducer = (state=[], action) => {
 	switch(action.type){
-		case 'ADD_TODO':
+		case ADD_TODO:
 			if(action.text.trim() === ""){
 				return state;
 			}

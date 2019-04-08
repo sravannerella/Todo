@@ -24,7 +24,6 @@ class AddBoard extends React.PureComponent{
 	}
 
 	componentWillReceiveProps(props){
-		console.log("AddBoard: ", props);
 		this.setState({
 			boardOpen: props.boardOpen,
 			name: ''

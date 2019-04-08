@@ -1,7 +1,6 @@
 import {CREATE_BOARD, DELETE_BOARD, RENAME_BOARD} from '../constants/board';
 
 export const createBoard = (name) => {
-	console.log("CREATE:", name);
 	return {
 		type: CREATE_BOARD,
 		name

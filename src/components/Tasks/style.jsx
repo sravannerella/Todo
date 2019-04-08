@@ -11,13 +11,13 @@ export const styles = theme => ({
 		}
 	},
 	blue: {
-		color: '#1a73e8',
+		color: '#34a853',
 		transition: '0.5s all infinite',
 		cursor: 'pointer'
 	},
 	radio: {
 		"&:hover": {
-			color: '#1a73e8',
+			color: '#34a854',
 			transition: '0.5s all infinite',
 			cursor: 'pointer'
 		}

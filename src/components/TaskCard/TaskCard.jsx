@@ -16,7 +16,6 @@ class Task extends React.PureComponent{
 
 	constructor(props){
 		super(props);
-		console.log("PROPS:", props);
 		this.classes = props.classes;
 	}
 

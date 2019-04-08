@@ -24,7 +24,7 @@ class Modal extends React.PureComponent{
 			text: '',
 			more: '',
 			board: '',
-			boards: [{board: 'Board 1', id: 1}, {board: 'My Tasks', id: 2}, {board: "Avengers", id: 3}]
+			boards: []
 		}
 	}
 

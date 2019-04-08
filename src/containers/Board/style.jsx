@@ -11,6 +11,19 @@ export const styles = theme => ({
 			boxShadow: theme.shadows[3]
 		}
 	},
+	input: {
+		marginLeft: 8,
+		flex: 1
+	},
+	iconButton: {
+		padding: 10
+	},
+	inputBox: {
+		padding: '2px 4px',
+		display: 'flex',
+		alignItems: 'center',
+		width: 400
+	},
 	list: {
 		display: 'flex',
 		flexDirection: 'row',

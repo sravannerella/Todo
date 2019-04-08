@@ -2,7 +2,6 @@ import { CREATE_BOARD, RENAME_BOARD, DELETE_BOARD } from "../constants/board";
 
 let nextID = 0;
 const boardReducer = (state=[], action) => {
-	console.log("STATE: ", state);
 	switch(action.type){
 		case CREATE_BOARD:
 			return [

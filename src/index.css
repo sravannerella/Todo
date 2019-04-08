@@ -17,12 +17,45 @@ code {
 	font-family: "Product Sans",source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-div li:nth-child(2) > div{
+div li:first-child > div{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
+div li .secondaryAction{
+	display: none;
+}
+
+div li:hover .secondaryAction{
+	display: block;
+}
+
+
 div li:last-child > div{
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+
+.inputBox{
+	padding: 2px 4px;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 95%;
+	margin: auto;
+}
+
+.input{
+	margin-left: 8px;
+	flex: 1;
+}
+
+.iconButton{
+	padding: 10px;
+}
+
+.animate{
+	background: #ededed;
+	color: #34a853;
+	transition: 0.2s all ease-in-out;
 }

@@ -9,6 +9,5 @@ export const editModal = (text, more, board, id) => {
 }
 
 export const toggleBoard = (open) => {
-	console.log("OPEN:", { type: TOGGLE_BOARD, open });
 	return { type: TOGGLE_BOARD, open }
 }
