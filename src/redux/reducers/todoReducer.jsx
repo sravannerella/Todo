@@ -1,4 +1,4 @@
-import {ADD_TODO} from '../constants/todo';
+import {ADD_TODO, UPDATE_TODO, TOGGLE_TODO} from '../constants/todo';
 
 let nextID = 0;
 const todoReducer = (state=[], action) => {
@@ -17,11 +17,11 @@ const todoReducer = (state=[], action) => {
 					completed: false
 				}
 			]
-		case 'UPDATE_TODO':
+		case UPDATE_TODO:
 			return state.map((todo) => {
 				return (todo.id === action.id) ? ({...todo, text: action.text, more: action.more, board: action.board, isEdit: true }) :  {...todo, isEdit: true};
 			});
-		case 'TOGGLE_TODO':
+		case TOGGLE_TODO:
 			return state.map((todo) => {
 				return (todo.id === action.id) ? ({...todo, completed: !todo.completed}) : todo;
 			});

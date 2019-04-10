@@ -5,6 +5,7 @@ export const styles = theme => ({
 		borderTopWidth: 0.5,
 		borderStyle: 'solid',
 		borderColor: '#dadce0',
+		transition: '0.1s all ease-in-out',
 		'&:hover': {
 			boxShadow: theme.shadows[2],
 			cursor: 'pointer'

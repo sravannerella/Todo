@@ -30,6 +30,9 @@ div li:hover .secondaryAction{
 	display: block;
 }
 
+.mt-2{
+	margin-top: 2rem;
+}
 
 div li:last-child > div{
 	border-bottom-left-radius: 5px;
@@ -57,5 +60,5 @@ div li:last-child > div{
 .animate{
 	background: #ededed;
 	color: #34a853;
-	transition: 0.2s all ease-in-out;
+	/* transition: 0.2s all ease-in-out; */
 }

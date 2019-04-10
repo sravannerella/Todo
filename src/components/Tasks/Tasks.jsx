@@ -13,6 +13,7 @@ import Edit from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import { toggleTodo } from '../../redux/actions/todoActions';
 import { editModal } from '../../redux/actions/visibilityActions';
+import Modal from '../Modal/Modal';
 
 class Tasks extends React.PureComponent{
 
@@ -21,6 +22,7 @@ class Tasks extends React.PureComponent{
 		this.classes = props.classes;
 		this.state = {
 			board: '',
+			isFade: false,
 			tasks: []
 		}
 	}
@@ -30,7 +32,7 @@ class Tasks extends React.PureComponent{
 			return task.board === boardName
 		});
 
-		tasksForBoard.sort((a,b) => a.completed - b.completed);
+		// tasksForBoard.sort((a,b) => a.completed - b.completed);
 		return tasksForBoard;
 	}
 
@@ -49,6 +51,9 @@ class Tasks extends React.PureComponent{
 
 	markDone(id){
 		this.props.toggleTodo(id);
+		this.setState({
+			isFade: !this.state.isFade
+		});
 	}
 
 	editTask(board, id){
@@ -59,10 +64,11 @@ class Tasks extends React.PureComponent{
 	render(){
 		return (
 			<>
+				<Modal />
 				<List className={this.classes.list}>
 					{this.state.tasks.map( (item) => {
 						return (
-							<ListItem className={ (item.completed) ? 'animate ' + this.classes.item : this.classes.item} key={item.id}>
+							<ListItem className={ (item.completed) ? 'animate ' + this.classes.item : 'removeAnimate ' + this.classes.item} key={item.id}>
 								<ListItemIcon onClick={this.markDone.bind(this, item.id)}>
 									{ (item.completed) ? <DoneIcon className={this.classes.blue} /> : <RadioButtonUncheckedIcon  className={this.classes.radio} /> }
 								</ListItemIcon>
