@@ -1,0 +1,5 @@
+export const GET_SUBTASK = 'GET_SUBTASK';
+export const ADD_SUBTASK = 'ADD_SUBTASK';
+export const DELETE_SUBTASK = 'DELETE_SUBTASK';
+export const UPDATE_SUBTASK = 'UPDATE_SUBTASK';
+export const TOGGLE_SUBTASK = 'TOGGLE_SUBTASK';

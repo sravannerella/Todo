@@ -5,32 +5,15 @@ export const styles = theme => ({
 		borderTopWidth: 0.5,
 		borderStyle: 'solid',
 		borderColor: '#dadce0',
+		transition: '0.1s all ease-in-out',
 		'&:hover': {
 			boxShadow: theme.shadows[2],
 			cursor: 'pointer'
 		}
 	},
-	board: {
-		margin: '0 10px',
-		width: 300,
-		borderTopWidth: 6,
-		borderTopStyle: 'solid',
-		borderTopColor: theme.palette.primary.main,
-		borderTopLeftRadius: 2,
-		borderTopRightRadius: 2
-	},
-	boardHeading: {
-		fontSize: 18,
-		paddingLeft: 10
-	},
-	list: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap'
-	},
 	blue: {
 		color: '#1a73e8',
-		transition: '0.5s all infinite',
+		transition: '1s all infinite',
 		cursor: 'pointer'
 	},
 	radio: {

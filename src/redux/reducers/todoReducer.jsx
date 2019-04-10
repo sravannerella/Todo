@@ -1,9 +1,11 @@
+import {ADD_TODO, UPDATE_TODO, TOGGLE_TODO, DELETE_TODO} from '../constants/todo';
+
 let nextID = 0;
 const todoReducer = (state=[], action) => {
 	switch(action.type){
-		case 'ADD_TODO':
+		case ADD_TODO:
 			if(action.text.trim() === ""){
-				return state;
+				return [...state];
 			}
 			return [
 				...state,
@@ -15,16 +17,20 @@ const todoReducer = (state=[], action) => {
 					completed: false
 				}
 			]
-		case 'UPDATE_TODO':
+		case UPDATE_TODO:
 			return state.map((todo) => {
 				return (todo.id === action.id) ? ({...todo, text: action.text, more: action.more, board: action.board, isEdit: true }) :  {...todo, isEdit: true};
 			});
-		case 'TOGGLE_TODO':
+		case TOGGLE_TODO:
 			return state.map((todo) => {
 				return (todo.id === action.id) ? ({...todo, completed: !todo.completed}) : todo;
 			});
+		case DELETE_TODO:
+			let pos = state.findIndex((todo) => todo.id === action.id);
+			state.splice(pos, 1);
+			return [...state];
 		default:
-			return state;
+			return [...state];
 	}
 }
 

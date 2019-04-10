@@ -1,4 +1,4 @@
-import {CREATE_BOARD, DELETE_BOARD, RENAME_BOARD, TOGGLE_BOARD} from '../constants/board';
+import {CREATE_BOARD, DELETE_BOARD, RENAME_BOARD} from '../constants/board';
 
 export const createBoard = (name) => {
 	return {
@@ -19,12 +19,5 @@ export const renameBoard = (id, name) => {
 		type: RENAME_BOARD,
 		id,
 		name
-	}
-}
-
-export const toggleBoard = (open) => {
-	return {
-		type: TOGGLE_BOARD,
-		open
 	}
 }

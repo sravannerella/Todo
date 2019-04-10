@@ -17,12 +17,60 @@ code {
 	font-family: "Product Sans",source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-div li:nth-child(2) > div{
+div li:first-child > div{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+}
+
+div li .secondaryAction{
+	display: none;
+}
+
+div li:hover .secondaryAction{
+	display: block;
+}
+
+.mt-2{
+	margin-top: 2rem;
 }
 
 div li:last-child > div{
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+
+.inputBox{
+	padding: 2px 4px;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 95%;
+	margin: auto;
+}
+
+.input{
+	margin-left: 8px;
+	flex: 1;
+}
+
+.iconButton{
+	padding: 10px;
+}
+
+.animate, .animate + span{
+	text-decoration: line-through !important;
+	text-decoration-color: #212121 !important;
+	transition: 0.2s all ease-in-out;
+}
+
+.animate span, .animate + span{
+	color: #6d6d6d;
+}
+
+.animate [class*="MuiIconButton"] {
+	color: #1a73e8;
+}
+
+.list{
+	padding: 0px !important;
 }

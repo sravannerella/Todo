@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, UPDATE_TODO } from '../constants/todo';
+import { ADD_TODO, TOGGLE_TODO, UPDATE_TODO, DELETE_TODO } from '../constants/todo';
 
 export const addTodo = (text, more, board) => {
 	return{
@@ -10,6 +10,13 @@ export const addTodo = (text, more, board) => {
 export const toggleTodo = (id) => {
 	return{
 		type: TOGGLE_TODO,
+		id
+	}
+}
+
+export const deleteTodo = (id) => {
+	return {
+		type: DELETE_TODO,
 		id
 	}
 }

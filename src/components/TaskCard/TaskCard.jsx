@@ -16,47 +16,16 @@ class Task extends React.PureComponent{
 
 	constructor(props){
 		super(props);
-		console.log("PROPS:", props);
 		this.classes = props.classes;
 	}
 
 	render(){
 		return (
 			<>
-			{this.props.obj.map((item) => {
-				return (
-					<ExpansionPanel className={this.classes.task} key={item.id}>
-						<ExpansionPanelSummary className={this.classes.summary}>
-							<Typography className={this.classes.heading}>
-								{item.text}
-							</Typography>
-						</ExpansionPanelSummary>
-						<ExpansionPanelDetails>
-							<Typography>
-								{item.more}
-							</Typography>
-						</ExpansionPanelDetails>
-						<Divider />
-						<ExpansionPanelActions className={this.classes.center}>
-							<Button size="small" className={this.classes.success}>
-								<DoneIcon className={this.classes.textSuccess}></DoneIcon>
-								Done
-							</Button>
-							<Button size="small" className={this.classes.danger}>
-								<DeleteIcon className={this.classes.textDanger}></DeleteIcon>
-								Remove
-							</Button>
-						</ExpansionPanelActions>
-					</ExpansionPanel>
-				)
-			})}
+
 			</>
 		)
 	}
-}
-
-Task.propTypes = {
-	obj: PropTypes.array.isRequired
 }
 
 export default withStyles(styles, {withTheme: true})(Task);

@@ -1,6 +1,8 @@
+import { TOGGLE_BOARD, EDIT_MODAL, TOGGLE_MODAL } from "../constants/visibility";
+
 const visibilityReducer = (state=[], action) => {
 	switch(action.type){
-		case 'TOGGLE_MODAL':
+		case TOGGLE_MODAL:
 			return {
 				...state,
 				open: !action.open,
@@ -9,7 +11,7 @@ const visibilityReducer = (state=[], action) => {
 				board: '',
 				isEdit: false
 			}
-		case 'EDIT_MODAL':
+		case EDIT_MODAL:
 			return{
 				...state,
 				open: !action.open,
@@ -18,6 +20,12 @@ const visibilityReducer = (state=[], action) => {
 				more: action.more,
 				board: action.board,
 				isEdit: !action.isEdit
+			}
+		case TOGGLE_BOARD:
+			return {
+				...state,
+				boardOpen: !action.open,
+				name: ''
 			}
 		default:
 			return state
