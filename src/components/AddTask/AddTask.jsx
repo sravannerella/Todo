@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addTodo} from '../../redux/actions/todoActions';
-// import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
@@ -37,24 +36,6 @@ class AddTask extends React.PureComponent{
 
 	render(){
 		return(
-			// <div className="inputBox">
-			// 	{/* <TextField 
-			// 		autoFocus
-			// 		label="Enter title" InputLabelProps={{shrink: true}} 
-			// 		value={this.state.text}
-			// 		onChange={this.handleChange('text')}
-			// 		onKeyPress={ e => this.keyPressed(e)}
-			// 		fullWidth>
-			// 	</TextField> */}
-			// 	<InputBase 
-			// 		autoFocus
-			// 		label="Add Task" InputLabelProps={{shrink: true}} 
-			// 		value={this.state.text}
-			// 		onChange={this.handleChange('text')}
-			// 		onKeyPress={ e => this.keyPressed(e)}
-			// 		fullWidth
-			// 	/>
-			// </div>
 			<Paper className="inputBox" elevation={1}>
 				<InputBase 
 					autoFocus

@@ -4,6 +4,9 @@ let nextID = 0;
 const boardReducer = (state=[], action) => {
 	switch(action.type){
 		case CREATE_BOARD:
+			if(action.name.trim() === ""){
+				return [...state];
+			}
 			return [
 				...state,
 				{

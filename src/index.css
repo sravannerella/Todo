@@ -57,8 +57,20 @@ div li:last-child > div{
 	padding: 10px;
 }
 
-.animate{
-	background: #ededed;
-	color: #34a853;
-	/* transition: 0.2s all ease-in-out; */
+.animate, .animate + span{
+	text-decoration: line-through !important;
+	text-decoration-color: #212121 !important;
+	transition: 0.2s all ease-in-out;
+}
+
+.animate span, .animate + span{
+	color: #6d6d6d;
+}
+
+.animate [class*="MuiIconButton"] {
+	color: #1a73e8;
+}
+
+.list{
+	padding: 0px !important;
 }

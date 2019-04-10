@@ -26,11 +26,17 @@ class Modal extends React.PureComponent{
 			text: '',
 			more: '',
 			board: '',
+			subTasks: [],
 			boards: []
 		}
 	}
 
+	filterById(id, subTasks){
+		return subTasks.filter((task) => task.todoId === id);
+	}
+
 	componentWillReceiveProps(props){
+		let subtasks = this.filterById(props.id, props.subTasks);
 		this.setState({
 			open: props.open,
 			text: props.text,
@@ -38,6 +44,7 @@ class Modal extends React.PureComponent{
 			board: props.board,
 			boards: props.boards,
 			id: props.id,
+			subTasks: subtasks,
 			isEdit: props.isEdit,
 		});
 	}
@@ -80,7 +87,7 @@ class Modal extends React.PureComponent{
 
 					<div className="mt-2">
 						<Typography gutterBottom variant="subtitle1">Sub Tasks:</Typography>
-						{/* <SubTask id={this.state.id} board={this.state.board || ''}/> */}
+						<SubTask id={this.state.id} subTasks={this.state.subTasks} board={this.state.board || ''}/>
 					</div>
 
 				</DialogContent>
@@ -99,6 +106,7 @@ const mapStateToProps = (state) => ({
 	more: state.visibilityReducer.more,
 	board: state.visibilityReducer.board,
 	boards: state.boardReducer,
+	subTasks: state.subTaskReducer,
 	id: state.visibilityReducer.id,
 	isEdit: state.visibilityReducer.isEdit
 });

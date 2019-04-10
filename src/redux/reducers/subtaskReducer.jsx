@@ -1,4 +1,4 @@
-import { ADD_SUBTASK, UPDATE_SUBTASK, TOGGLE_SUBTASK, GET_SUBTASK } from "../constants/subTask";
+import { ADD_SUBTASK, UPDATE_SUBTASK, TOGGLE_SUBTASK, GET_SUBTASK, DELETE_SUBTASK } from "../constants/subTask";
 
 let nextID = 0;
 const subTaskReducer = (state=[], action) => {
@@ -22,12 +22,16 @@ const subTaskReducer = (state=[], action) => {
 			]
 		case UPDATE_SUBTASK:
 			return state.map((todo) => {
-				return (todo.id === action.id && todo.todoId === action.todoId && todo.board === action.board) ? ({...todo, text: action.text, isEdit: true}) : {...todo, isEdit: true};
+				return (todo.id === action.id) ? ({...todo, text: action.text, isEdit: true}) : {...todo, isEdit: true};
 			});
 		case TOGGLE_SUBTASK:
 			return state.map((todo) => {
-				return (todo.id === action.id && todo.todoId === action.todoId && todo.board === action.board) ? ({...todo, completed: !todo.completed}) : todo;
-			})
+				return (todo.id === action.id) ? ({...todo, completed: !todo.completed}) : todo;
+			});
+		case DELETE_SUBTASK:
+			let pos = state.findIndex((task) => task.id === action.id);
+			state.splice(pos, 1);
+			return [...state];
 		default:
 			return state;
 	}

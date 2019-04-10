@@ -14,23 +14,23 @@ export const getSubTask = (todoId, board) => {
 	}
 }
 
-export const toggleSubTask = (id, board, todoId) => {
+export const toggleSubTask = (id) => {
 	return{
 		type: TOGGLE_SUBTASK,
-		id, board, todoId
+		id
 	}
 }
 
-export const deleteSubTask = (id, board, todoId) => {
+export const deleteSubTask = (id) => {
 	return {
 		type: DELETE_SUBTASK,
-		id, board, todoId
+		id
 	}
 }
 
 export const updateSubTask = (id, text, board, todoId) => {
 	return {
 		type: UPDATE_SUBTASK,
-		text, id, board, todoId
+		text, id
 	}
 }

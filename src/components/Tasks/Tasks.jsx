@@ -9,9 +9,9 @@ import {withStyles} from '@material-ui/core/styles';
 import DoneIcon from '@material-ui/icons/Done';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import {connect} from 'react-redux';
-import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
-import { toggleTodo } from '../../redux/actions/todoActions';
+import { toggleTodo, deleteTodo } from '../../redux/actions/todoActions';
 import { editModal } from '../../redux/actions/visibilityActions';
 import Modal from '../Modal/Modal';
 
@@ -49,11 +49,16 @@ class Tasks extends React.PureComponent{
 		})
 	}
 
-	markDone(id){
+	markDone(id, e){
+		e.stopPropagation();
 		this.props.toggleTodo(id);
 		this.setState({
 			isFade: !this.state.isFade
 		});
+	}
+
+	deleteTask(id){
+		this.props.deleteTodo(id);
 	}
 
 	editTask(board, id){
@@ -68,14 +73,14 @@ class Tasks extends React.PureComponent{
 				<List className={this.classes.list}>
 					{this.state.tasks.map( (item) => {
 						return (
-							<ListItem className={ (item.completed) ? 'animate ' + this.classes.item : 'removeAnimate ' + this.classes.item} key={item.id}>
+							<ListItem className={ (item.completed) ? 'animate ' + this.classes.item : 'removeAnimate ' + this.classes.item} key={item.id} onClick={this.editTask.bind(this, this.state.board, item.id)}>
 								<ListItemIcon onClick={this.markDone.bind(this, item.id)}>
 									{ (item.completed) ? <DoneIcon className={this.classes.blue} /> : <RadioButtonUncheckedIcon  className={this.classes.radio} /> }
 								</ListItemIcon>
 								<ListItemText key={item.id} primary={item.text} secondary={item.more} />
-								<ListItemSecondaryAction className="secondaryAction">
-									<IconButton aria-label="Delete" onClick={this.editTask.bind(this, this.state.board, item.id)}>
-										<Edit></Edit>
+								<ListItemSecondaryAction onClick={this.deleteTask.bind(this, item.id)} className="secondaryAction">
+									<IconButton aria-label="Delete">
+										<Delete />
 									</IconButton>
 								</ListItemSecondaryAction>
 							</ListItem>
@@ -91,4 +96,4 @@ const mapStateToProps = (state) => ({
 	tasks: state.todoReducer
 });
 
-export default connect(mapStateToProps, { toggleTodo, editModal })(withStyles(styles, {withTheme: true})(Tasks));
+export default connect(mapStateToProps, { toggleTodo, deleteTodo, editModal })(withStyles(styles, {withTheme: true})(Tasks));
