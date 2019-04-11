@@ -2,6 +2,8 @@
 
 This is a ReactJS based Todo application which only works in local for now. In the future maybe, I will create a web version and sync using web sockets.
 
+![Todo Image](public/todo.png)
+
 ## Stack:
 - ReactJS
 - Redux
