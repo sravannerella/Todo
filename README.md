@@ -4,7 +4,7 @@ This is a ReactJS based Todo application which only works in local for now. In t
 
 <!-- ![Todo Image](public/todo.png =250x) -->
 <p align="center">
-	<img src="public/todo.png" width="450" height="350">
+	<img src="public/todo.PNG" width="450" height="350">
 </p>
 
 ## Stack:
