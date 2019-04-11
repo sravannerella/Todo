@@ -2,7 +2,10 @@
 
 This is a ReactJS based Todo application which only works in local for now. In the future maybe, I will create a web version and sync using web sockets.
 
-![Todo Image](public/todo.png)
+<!-- ![Todo Image](public/todo.png =250x) -->
+<p align="center">
+	<img src="public/todo.png" width="450" height="350">
+</p>
 
 ## Stack:
 - ReactJS
