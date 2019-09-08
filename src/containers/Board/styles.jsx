@@ -13,5 +13,10 @@ export const styles = (theme) => ({
         marginBottom: '1rem',
         alignItems: 'center',
         justifyContent: 'space-between'
+    },
+    addTask: {
+        width: '100%',
+        borderRadius: theme.spacing(2),
+        marginTop: '1rem'
     }
 })

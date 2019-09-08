@@ -1,6 +1,8 @@
 import React from 'react';
-import { Header, Board } from '../../components';
-import { Container } from '@material-ui/core';
+import { Header } from '../../components';
+import { Board } from '../../containers';
+import { Container, Fab } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
 import { styles } from './styles';
 import { addStyles } from '../../hoc';
 
@@ -10,9 +12,14 @@ class App extends React.Component{
         return(
             <>
                 <Header />
-                <Container maxWidth="lg" className={classes.body}>
+                <Container maxWidth="xl" className={classes.body}>
+                    <div className={classes.ml1}>
+                        <Fab color="primary" variant="extended" id="btn">
+                            <Add />
+                            Add Board
+                        </Fab>
+                    </div>
                     <div className={classes.boards}>
-                        <Board />
                         <Board />
                     </div>
                 </Container>

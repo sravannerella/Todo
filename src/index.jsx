@@ -4,10 +4,14 @@ import './index.css';
 import {App} from './pages';
 import { ThemeProvider } from '@material-ui/styles';
 import { theme } from './theme';
+import {Provider} from 'react-redux';
+import store from './redux/store';
 
 const themeProvider = (
     <ThemeProvider theme={theme}>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </ThemeProvider>
 )
 
