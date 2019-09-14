@@ -12,11 +12,15 @@ class Task extends React.Component{
         title: PropTypes.string.isRequired
     }
 
+    showDetail = (title) => {
+        console.log("title:", title)
+    }
+
     render(){
         const {classes, isLoading, title} = this.props;
         return(
             <>
-                <Card className={classes.card} draggable>
+                <Card className={classes.card} draggable onClick={this.showDetail.bind(this, title)}>
                     <CardContent>
                         
                         {isLoading && <>

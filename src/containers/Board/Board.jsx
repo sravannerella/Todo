@@ -35,15 +35,24 @@ class Board extends React.Component{
                     <Typography variant="subtitle1">Todo Tasks</Typography>
                     <Chip label={payloadLength} variant="default" color="primary" className={classes.chip} />
                 </div>
+
+                { loading && <div>
+                    <Task isLoading={loading} title="Loading" />
+                    <Task isLoading={loading} title="Loading" />
+                </div>}
                 
                 { (!loading && payloadLength === 0) && <Typography variant="subtitle2">Yay! No Tasks.</Typography> }
 
-                { payloadLength > 0 && payload.map((item, index) => <Task isLoading={loading} key={index} title={item.title} />)}
+                <div className={classes.tasks}>
+                    { payloadLength > 0 && payload.map((item, index) => <Task isLoading={loading} key={index} title={item.title} />)}                    
+                </div>
                 
-                <Button className={classes.addTask}>
-                    <Add />
-                    Add Task
-                </Button>
+                <div className={classes.footer}>
+                    <Button className={classes.addTask}>
+                        <Add />
+                        Add Task
+                    </Button>
+                </div>
                 
             </div>
         )

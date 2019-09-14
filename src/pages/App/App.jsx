@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../components';
+import { Header, ViewTask } from '../../components';
 import { Board } from '../../containers';
 import { Container, Fab } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
@@ -13,6 +13,9 @@ class App extends React.Component{
             <>
                 <Header />
                 <Container maxWidth="xl" className={classes.body}>
+
+                    <ViewTask />
+
                     <div className={classes.ml1}>
                         <Fab color="primary" variant="extended" id="btn">
                             <Add />
