@@ -10,5 +10,11 @@ export const styles = (theme) => ({
     },
     tags: {
         marginTop: 5
+    },
+    closeButton: {
+        position: 'absolute',
+        top: theme.spacing(1),
+        right: theme.spacing(1),
+        color: theme.palette.grey[500]
     }
 })

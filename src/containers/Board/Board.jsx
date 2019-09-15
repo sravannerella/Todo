@@ -4,7 +4,7 @@ import {Task} from '../../components';
 import {styles} from './styles';
 import { Typography, Chip, Button } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
-import {getTodos} from '../../redux/actions';
+import {getTodos, showTask} from '../../redux/actions';
 
 class Board extends React.Component{
 
@@ -15,6 +15,11 @@ class Board extends React.Component{
     dragged = (e) => {
         e.stopPropagation();
         e.preventDefault();
+    }
+
+    viewTaskDetails = (task, event) => {
+        const {showTask} = this.props;
+        showTask(task);
     }
 
     componentDidMount(){
@@ -44,7 +49,14 @@ class Board extends React.Component{
                 { (!loading && payloadLength === 0) && <Typography variant="subtitle2">Yay! No Tasks.</Typography> }
 
                 <div className={classes.tasks}>
-                    { payloadLength > 0 && payload.map((item, index) => <Task isLoading={loading} key={index} title={item.title} />)}                    
+                    { 
+                        payloadLength > 0 && 
+                        payload.map((item, index) => <Task isLoading={loading} 
+                                                            key={index} 
+                                                            title={item.title} 
+                                                            showTask={this.viewTaskDetails.bind(this, item)} 
+                                                    />)
+                    }
                 </div>
                 
                 <div className={classes.footer}>
@@ -61,4 +73,4 @@ class Board extends React.Component{
 
 const mapStateToProps = ({GetTodosReducer}) => ({...GetTodosReducer});
 
-export default connectWithStyles(Board, styles, mapStateToProps, {getTodos});
+export default connectWithStyles(Board, styles, mapStateToProps, {getTodos, showTask});

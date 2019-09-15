@@ -1,3 +1,4 @@
 import {getTodos} from './API/GetTodos/GetTodosActions';
+import {showTask, closeTask} from './Triggers';
 
-export {getTodos};
+export {getTodos, showTask, closeTask};

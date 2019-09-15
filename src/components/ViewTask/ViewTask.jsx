@@ -1,40 +1,50 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, Chip, Typography, Avatar } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, Chip, Typography, Avatar, IconButton } from '@material-ui/core';
 import { addStyles } from '../../hoc';
 import { styles } from './styles';
+import { Close } from '@material-ui/icons';
+import PropTypes from 'prop-types';
 
 class ViewTask extends React.Component{
 
-    state = {
-        open: true
+    static propTypes = {
+        open: PropTypes.bool.isRequired,
+        onClose: PropTypes.func.isRequired,
+        task: PropTypes.object.isRequired
     }
 
-    handleClose = () => {
-        this.setState({
-            open: false
-        })
+    showUpdate = () => {
+        console.log("UPDATED"); 
     }
 
     render(){
-        const {classes} = this.props;
-        const {open} = this.state;
-        
+        const {classes, open, onClose, task} = this.props;
         return(
             <>
-                <Dialog open={open} onClose={this.handleClose.bind(this)}>
-                    <DialogTitle>
-                        <Typography variant="h6">Task Title</Typography>
+                <Dialog open={open} onClose={onClose}>
+                    <DialogTitle disableTypography>
+                        <Typography variant="h6">{task.title}</Typography>
+                        <IconButton aria-label="close" onClick={onClose} className={classes.closeButton}>
+                            <Close />
+                        </IconButton>
                     </DialogTitle>
                     <DialogContent className={classes.content} dividers>
                         <div className={classes.mb1}>
                             <Typography variant="subtitle2">Assigned To:</Typography>
-                            <Chip variant="default" avatar={<Avatar>MB</Avatar>} className={classes.chip} color="primary" label="Mahesh Babu" />
+                            <Chip variant="default" 
+                                onClick={this.showUpdate.bind(this)} 
+                                avatar={<Avatar>MB</Avatar>} 
+                                className={classes.chip} 
+                                color="primary" label="Mahesh Babu" />
                         </div>
 
                         <div id="tags" className={classes.mb1}>
                             <Typography variant="subtitle2">Tags:</Typography>
                             <div className={classes.tags}>
-                                <Chip variant="outlined" onDelete={this.handleClose.bind(this)} className={classes.chip} label="TodoList" />
+                                <Chip variant="outlined" 
+                                    onClick={this.showUpdate.bind(this)}
+                                    onDelete={onClose} 
+                                    className={classes.chip} label="TodoList" />
                             </div>
                         </div>
                         
