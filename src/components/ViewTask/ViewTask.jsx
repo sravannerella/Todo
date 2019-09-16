@@ -4,6 +4,7 @@ import { addStyles } from '../../hoc';
 import { styles } from './styles';
 import { Close } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import { SubTasks } from '../../containers';
 
 class ViewTask extends React.Component{
 
@@ -54,8 +55,12 @@ class ViewTask extends React.Component{
                         </div>
 
                         <div className={classes.mb1}>
+                            <Typography variant="subtitle2">Sub Tasks:</Typography>                            
+                            <SubTasks />
+                        </div>
+
+                        <div className={classes.mb1}>
                             <Typography variant="subtitle2">Attachments</Typography>
-                            
                         </div>
                     </DialogContent>
                 </Dialog>
