@@ -24,28 +24,40 @@ class ViewTask extends React.Component{
             <>
                 <Dialog open={open} onClose={onClose}>
                     <DialogTitle disableTypography>
-                        <Typography variant="h6">{task.title}</Typography>
+                        <Typography variant="h6" className={classes.overflow}>{task.title}</Typography>
                         <IconButton aria-label="close" onClick={onClose} className={classes.closeButton}>
                             <Close />
                         </IconButton>
                     </DialogTitle>
                     <DialogContent className={classes.content} dividers>
-                        <div className={classes.mb1}>
-                            <Typography variant="subtitle2">Assigned To:</Typography>
-                            <Chip variant="default" 
-                                onClick={this.showUpdate.bind(this)} 
-                                avatar={<Avatar>MB</Avatar>} 
-                                className={classes.chip} 
-                                color="primary" label="Mahesh Babu" />
-                        </div>
+                        <div className={classes.horizontal}>
+                            <div className={classes.item}>
+                                <Typography variant="subtitle2">Assigned To:</Typography>
+                                <Chip variant="default" 
+                                    onClick={this.showUpdate.bind(this)} 
+                                    avatar={<Avatar>MB</Avatar>} 
+                                    className={classes.chip} 
+                                    color="primary" label="Mahesh Babu" />
+                            </div>
 
-                        <div id="tags" className={classes.mb1}>
-                            <Typography variant="subtitle2">Tags:</Typography>
-                            <div className={classes.tags}>
+                            <div id="tags" className={classes.item}>
+                                <Typography variant="subtitle2">Priority:</Typography>
+                                <div>
+                                    <Chip variant="outlined" 
+                                        onClick={this.showUpdate.bind(this)}
+                                        onDelete={onClose} 
+                                        className={classes.chip} label="High" />
+                                </div>
+                            </div>
+
+                            <div id="due" className={classes.item}>
+                                <Typography variant="subtitle2">Due Date:</Typography>
+                                {/* <Typography variant="subtitle2" className={classes.mt1}>September 18th, 2019</Typography> */}
                                 <Chip variant="outlined" 
-                                    onClick={this.showUpdate.bind(this)}
-                                    onDelete={onClose} 
-                                    className={classes.chip} label="TodoList" />
+                                        color='primary' 
+                                        onClick={this.showUpdate.bind(this)}
+                                        className={classes.chip} 
+                                        label="September 10th, 2019" />
                             </div>
                         </div>
                         
@@ -55,7 +67,7 @@ class ViewTask extends React.Component{
                         </div>
 
                         <div className={classes.mb1}>
-                            <Typography variant="subtitle2">Sub Tasks:</Typography>                            
+                            <Typography variant="subtitle2" className={classes.mb1}>Sub Tasks:</Typography>                            
                             <SubTasks />
                         </div>
 
