@@ -5,9 +5,6 @@ export const styles = (theme) => ({
     mb1: {
         marginBottom: '1rem'
     },
-    chip: {
-        margin: '5px 5px 0 0'
-    },
     closeButton: {
         position: 'absolute',
         top: theme.spacing(1),

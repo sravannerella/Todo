@@ -1,10 +1,12 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, Chip, Typography, Avatar, IconButton } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, Typography, IconButton } from '@material-ui/core';
 import { addStyles } from '../../hoc';
 import { styles } from './styles';
 import { Close } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import { SubTasks } from '../../containers';
+import { LabelChip } from '../../elements';
+import { Attachments } from '..';
 
 class ViewTask extends React.Component{
 
@@ -29,35 +31,19 @@ class ViewTask extends React.Component{
                             <Close />
                         </IconButton>
                     </DialogTitle>
+                    
                     <DialogContent className={classes.content} dividers>
                         <div className={classes.horizontal}>
                             <div className={classes.item}>
-                                <Typography variant="subtitle2">Assigned To:</Typography>
-                                <Chip variant="default" 
-                                    onClick={this.showUpdate.bind(this)} 
-                                    avatar={<Avatar>MB</Avatar>} 
-                                    className={classes.chip} 
-                                    color="primary" label="Mahesh Babu" />
+                                <LabelChip title="Assigned To:" color="primary" chipName="Mahesh Babu" onClick={this.showUpdate} />
                             </div>
 
-                            <div id="tags" className={classes.item}>
-                                <Typography variant="subtitle2">Priority:</Typography>
-                                <div>
-                                    <Chip variant="outlined" 
-                                        onClick={this.showUpdate.bind(this)}
-                                        onDelete={onClose} 
-                                        className={classes.chip} label="High" />
-                                </div>
+                            <div id="priority" className={classes.item}>
+                                <LabelChip title="Priority" onClick={this.showUpdate} chipName="High" />
                             </div>
 
                             <div id="due" className={classes.item}>
-                                <Typography variant="subtitle2">Due Date:</Typography>
-                                {/* <Typography variant="subtitle2" className={classes.mt1}>September 18th, 2019</Typography> */}
-                                <Chip variant="outlined" 
-                                        color='primary' 
-                                        onClick={this.showUpdate.bind(this)}
-                                        className={classes.chip} 
-                                        label="September 10th, 2019" />
+                                <LabelChip title="Due Date:" variant="outlined" onClick={this.showUpdate} chipName="September 10th, 2019" />
                             </div>
                         </div>
                         
@@ -73,6 +59,11 @@ class ViewTask extends React.Component{
 
                         <div className={classes.mb1}>
                             <Typography variant="subtitle2">Attachments</Typography>
+                            <Attachments />
+                        </div>
+
+                        <div className={classes.mb1}>
+                            <Typography variant="subtitle2">Comments</Typography>
                         </div>
                     </DialogContent>
                 </Dialog>
