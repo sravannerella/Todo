@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../components';
+import { Header, Members } from '../../components';
 import { Board, ShowTaskModal } from '../../containers';
 import { Container, Fab } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
@@ -16,6 +16,10 @@ class App extends React.Component{
 
                     <ShowTaskModal />
 
+                    <div className={classes.flex}>
+                        <Members />
+                    </div>
+
                     <div className={classes.ml1}>
                         <Fab color="primary" variant="extended" id="btn">
                             <Add />
@@ -24,7 +28,10 @@ class App extends React.Component{
                     </div>
                     <div className={classes.boards}>
                         <Board />
+                        <Board />
+                        <Board />
                     </div>
+                    
                 </Container>
             </>
         );
