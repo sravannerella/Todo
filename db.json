@@ -1,0 +1,39 @@
+{
+    "todos": [{
+        "userId": 1,
+        "id": 1,
+        "title": "Task 1",
+        "description": "Task 1 Description",
+        "completed": false,
+        "boardId": 1,
+        "assignedTo": "Super Star Mahesh Babu",
+        "priority": "High",
+        "dueDate": "September 10, 2019"
+    }],
+    "comments": [{
+        "todoId": 1,
+        "id": 1,
+        "comment": "Commented 1"
+    }],
+    "subtasks": [{
+        "todoId": 1,
+        "id": 1,
+        "description": "SubTask 1",
+        "completed": true
+    }, {
+        "todoId": 1,
+        "id": 2,
+        "description": "SubTask 2",
+        "completed": false
+    }],
+    "boards": [{
+        "id": 1,
+        "boardName": "Todo Tasks"
+    }, {
+        "id": 2,
+        "boardName": "In Progress"
+    }, {
+        "id": 3,
+        "boardName": "Completed"
+    }]
+}

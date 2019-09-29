@@ -4,16 +4,25 @@ import { SubTask } from '../../components';
 import { Button } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 import {styles} from './styles';
+import {getSubTasks} from '../../redux/actions';
 
 class SubTasks extends React.Component{
 
+    componentDidMount(){
+        const { getSubTasks } = this.props;
+        getSubTasks(1);
+    }
+
     render(){
-        const {classes} = this.props;
+        const {classes, payload, loading} = this.props;
+        const payloadLength = payload && payload.length;
+        console.log("PAYLOAD:", payload, payloadLength, this.props);
         return (
             <>
-                <div className={classes.mb1}>
-                    <SubTask />
-                </div>
+                { loading && <SubTask isLoading={loading} description="Loading" />}
+                { !loading && <div className={classes.mb1}>
+                    { payloadLength > 0 && payload.map((item, index) => <SubTask key={index} isLoading={loading} subtask={item}/>) }
+                </div>}
                 <Button variant="text" className={classes.btn}>
                     <Add />
                     Add SubTask
@@ -24,4 +33,6 @@ class SubTasks extends React.Component{
 
 }
 
-export default connectWithStyles(SubTasks, styles, null, null);
+const mapStateToProps = ({SubTasksReducer}) => ({...SubTasksReducer});
+
+export default connectWithStyles(SubTasks, styles, mapStateToProps, {getSubTasks});

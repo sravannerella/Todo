@@ -1,0 +1,3 @@
+export const GET_SUBTASKS = "GET_SUBTASKS";
+export const GOT_SUBTASKS = "GOT_SUBTASKS";
+export const ERR_SUBTASKS = "ERR_SUBTASKS";

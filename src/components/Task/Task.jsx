@@ -10,11 +10,12 @@ class Task extends React.Component{
     static propTypes = {
         isLoading: PropTypes.bool,
         title: PropTypes.string.isRequired,
+        description: PropTypes.string,
         showTask: PropTypes.func
     }
 
     render(){
-        const {classes, isLoading, title, showTask} = this.props;
+        const {classes, isLoading, title, description, showTask} = this.props;
         return(
             <>
                 <Card className={classes.card} draggable onClick={showTask}>
@@ -30,7 +31,7 @@ class Task extends React.Component{
                                 {title}
                             </Typography>
                             <Typography variant="caption">
-                                Task Description
+                                {description}
                             </Typography>
                         </> }
                     </CardContent>
