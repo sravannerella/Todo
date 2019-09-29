@@ -30,7 +30,7 @@ class Task extends React.Component{
                             <Typography variant="subtitle1">
                                 {title}
                             </Typography>
-                            <Typography variant="caption">
+                            <Typography variant="caption" className={classes.maxHeight}>
                                 {description}
                             </Typography>
                         </> }

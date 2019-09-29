@@ -3,7 +3,7 @@ import { connectWithStyles } from '../../hoc';
 import {Task} from '../../components';
 import {styles} from './styles';
 import { Typography, Chip } from '@material-ui/core';
-import {getTodos, showTask} from '../../redux/actions';
+import {getTodos, showTask, addToTasks} from '../../redux/actions';
 import { AddTask } from '../../elements';
 
 class Board extends React.Component{
@@ -17,7 +17,7 @@ class Board extends React.Component{
         e.preventDefault();
     }
 
-    viewTaskDetails = (task, event) => {
+    viewTaskDetails = (task, _) => {
         const {showTask} = this.props;
         showTask(task);
     }
@@ -25,6 +25,11 @@ class Board extends React.Component{
     componentDidMount(){
         const {getTodos} = this.props;
         getTodos();
+    }
+
+    addTask = (text, boardId) => {
+        const {addToTasks} = this.props;
+        addToTasks(text, boardId);
     }
 
     render(){
@@ -41,7 +46,7 @@ class Board extends React.Component{
                         <Typography variant="subtitle1">Todo Tasks</Typography>
                         <Chip label={payloadLength} variant="default" color="primary" className={classes.chip} />
                     </div>
-                    <AddTask />
+                    <AddTask onSubmit={this.addTask}/>
                 </div>
                 
 
@@ -70,6 +75,6 @@ class Board extends React.Component{
     }
 }
 
-const mapStateToProps = ({GetTodosReducer}) => ({...GetTodosReducer});
+const mapStateToProps = ({GetTodosReducer, TasksReducer}) => ({...GetTodosReducer, TasksReducer});
 
-export default connectWithStyles(Board, styles, mapStateToProps, {getTodos, showTask});
+export default connectWithStyles(Board, styles, mapStateToProps, {getTodos, showTask, addToTasks});

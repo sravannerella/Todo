@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, Typography, IconButton } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, Typography, IconButton, TextField } from '@material-ui/core';
 import { addStyles } from '../../hoc';
 import { styles } from './styles';
 import { Close } from '@material-ui/icons';
@@ -16,12 +16,26 @@ class ViewTask extends React.Component{
         task: PropTypes.object.isRequired
     }
 
+    state = {
+        clicked: false
+    }
+
+    toggleClick = () => {
+        const {clicked} = this.state;
+
+        this.setState({
+            clicked: !clicked
+        })
+    }
+
     showUpdate = () => {
         console.log("UPDATED"); 
     }
 
     render(){
         const {classes, open, onClose, task} = this.props;
+        const { clicked } = this.state;
+
         return(
             <>
                 <Dialog open={open} onClose={onClose}>
@@ -35,7 +49,7 @@ class ViewTask extends React.Component{
                     <DialogContent className={classes.content} dividers>
                         <div className={classes.horizontal}>
                             <div className={classes.item}>
-                                <LabelChip title="Assigned To:" color="primary" chipName="Mahesh Babu" onClick={this.showUpdate} />
+                                <LabelChip title="Assigned To:" color="primary" chipName={task.assignedTo} onClick={this.showUpdate} />
                             </div>
 
                             <div id="priority" className={classes.item}>
@@ -43,13 +57,26 @@ class ViewTask extends React.Component{
                             </div>
 
                             <div id="due" className={classes.item}>
-                                <LabelChip title="Due Date:" variant="outlined" onClick={this.showUpdate} chipName="September 10th, 2019" />
+                                <LabelChip title="Due Date:" variant="outlined" onClick={this.showUpdate} chipName={task.dueDate} />
                             </div>
                         </div>
                         
                         <div className={classes.mb1}>
                             <Typography variant="subtitle2">Description:</Typography>
-                            <Typography variant="caption">{task.description}</Typography>
+                            <TextField onBlur={this.toggleClick} className={clicked ? classes.w100 : classes.hidden } 
+                                    variant="outlined" 
+                                    multiline 
+                                    rowsMax="4" 
+                                    InputProps={{
+                                        classes: {
+                                            root: classes.desc,
+                                            input: classes.descField
+                                        }
+                                    }}
+                                    value={task.description} />
+                            <div onClick={this.toggleClick} className={clicked ? classes.hidden : classes.description}>
+                                <Typography variant="caption">{task.description}</Typography>
+                            </div>
                         </div>
 
                         <div className={classes.mb1}>
@@ -62,9 +89,10 @@ class ViewTask extends React.Component{
                             <Attachments />
                         </div>
 
-                        <div className={classes.mb1}>
+                        {/* <div className={classes.mb1}>
                             <Typography variant="subtitle2">Comments</Typography>
-                        </div>
+                        </div> */}
+                        
                     </DialogContent>
                 </Dialog>
             </>

@@ -6,5 +6,10 @@ export const styles = (theme) => ({
    },
    smallBreak: {
        marginBottom: 3
+   },
+   maxHeight: {
+       display: 'block',
+       overflow: 'hidden',
+       maxHeight: 40
    }
 })
