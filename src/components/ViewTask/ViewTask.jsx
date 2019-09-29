@@ -49,12 +49,12 @@ class ViewTask extends React.Component{
                         
                         <div className={classes.mb1}>
                             <Typography variant="subtitle2">Description:</Typography>
-                            <Typography variant="caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit repellat, animi vel quibusdam ut consequuntur doloremque molestias error possimus corporis dolores quis ab illo, sequi eligendi saepe rerum sapiente repellendus.</Typography>
+                            <Typography variant="caption">{task.description}</Typography>
                         </div>
 
                         <div className={classes.mb1}>
                             <Typography variant="subtitle2" className={classes.mb1}>Sub Tasks:</Typography>                            
-                            <SubTasks />
+                            <SubTasks taskId={task.id} />
                         </div>
 
                         <div className={classes.mb1}>

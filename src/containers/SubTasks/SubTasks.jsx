@@ -9,14 +9,14 @@ import {getSubTasks} from '../../redux/actions';
 class SubTasks extends React.Component{
 
     componentDidMount(){
-        const { getSubTasks } = this.props;
-        getSubTasks(1);
+        const { getSubTasks, taskId } = this.props;
+        getSubTasks(taskId);
     }
 
     render(){
         const {classes, payload, loading} = this.props;
         const payloadLength = payload && payload.length;
-        console.log("PAYLOAD:", payload, payloadLength, this.props);
+
         return (
             <>
                 { loading && <SubTask isLoading={loading} description="Loading" />}
