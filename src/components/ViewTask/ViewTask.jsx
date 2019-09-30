@@ -17,7 +17,8 @@ class ViewTask extends React.Component{
     }
 
     state = {
-        clicked: false
+        clicked: false,
+        description: ''
     }
 
     toggleClick = () => {
@@ -32,9 +33,16 @@ class ViewTask extends React.Component{
         console.log("UPDATED"); 
     }
 
+    componentDidMount(){
+        const {task} = this.props;
+        this.setState({
+            description: task.description
+        });
+    }
+
     render(){
         const {classes, open, onClose, task} = this.props;
-        const { clicked } = this.state;
+        const { clicked, description } = this.state;
 
         return(
             <>
@@ -73,7 +81,7 @@ class ViewTask extends React.Component{
                                             input: classes.descField
                                         }
                                     }}
-                                    value={task.description} />
+                                    value={description} />
                             <div onClick={this.toggleClick} className={clicked ? classes.hidden : classes.description}>
                                 <Typography variant="caption">{task.description}</Typography>
                             </div>
